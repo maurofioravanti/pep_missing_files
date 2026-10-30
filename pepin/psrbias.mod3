@@ -1,0 +1,7 @@
+AREC      MSP2 -4     0                            mk2_14
+AREC      MSS2 -4     1 0 1.76224E-06              mk2_23
+AREC      MSP3 -4     1 0-1.41534E-06              mk3_14m
+AREC      8SP3 -4     0 0 0.00000E+00              mk3_14m (same but 1855 only)
+AREC      RSP3 -4     1 0-1.70281E-06              mk3_14r
+AREC      WSP3 -4     0 0 0.00000E+00              mk3_14w
+AREC      MSS3 -4     1 0 2.27075E-07              mk3_23m

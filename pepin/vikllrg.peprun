@@ -1,0 +1,142 @@
+/SPECIAL
+lnkforts ?PATH llr.reduced
+/GO
+SOL ?RUNNUM - VIKLLR PEPRUN - VIKING+OTHER TSNE'S, GDOT, LUNAR
+LAST UPDATED 1996 JAN 24
+
+*INCLUDE '?PATH/pepin/nmlst1.include'
+ JCT(29)=1          $ EARTH NUTATION TERMS
+ JCT(51)=2*1        $ MULTIPLE SOLUTIONS AND SUMMARY
+ JCT(52)=0          $ NO SUMMARY
+$$ JCT(51)=-1          $ EXTRA HALF ITERATION
+$                     OBSLIB DATA SETS AND PGM FLOW
+ NUMOBT=0,ICT(5)=1
+$$ NUMOBT=4, ICT(5)=0, IOBS0=41,42,43,44, IOBS1=51,52,53,54
+ IMAT0=60,61,62,63,64,65,66,67,68, NUMMT0=?NUMMT0
+$$ WGTMT0= 1, $WGTOPT
+ IMAT1=0,IMAT2=80,
+ ICT(80)=1
+$                         START PARMS AND L-VECTORS
+*INCLUDE '?PATH/pepin/sscon.?ITER'
+  LPRM=3,   $ Mass of Earth+Moon
+       10,  $ Mass of Moon divided by mass of earth + moon
+       32,  $ GMVARY  (G-dot)
+       33,  $ SUNHAR  second harmonic of grav. potential of sun
+       41,  $ beta (excluding the principle of equivalence)
+       42,  $ gamma (excluding the principle of equivalence)
+       60,  $ constant plasma factor for interplanetary media
+       72   $ CTVARY coefficient of scale variation for time varying gravitational constant
+$$ LPRM=3,10
+$$*INCLUDE '?PATH/pepin/dtb01.include'
+$$ $ LDT(45)=0,LDT(245)=0,LDT(445)=0  $ FIX UT1, XWOB AND YWOB AT 244255
+$$ LDT(201)=200*0   $ FIX ALL XWOB'S
+$$ LDT(125)=4*0,LDT(325)=4*0,LDT(525)=4*0  $ NO DATA FOR THESE
+$$ LDT(114)=0,LDT(314)=0,LDT(514)=0         $ NO DATA FOR THESE EITHER
+ 
+*OBJECT MERCURY
+*INCLUDE '?PATH/pepin/mercury.?ITER'
+ 
+*OBJECT VENUS
+*INCLUDE '?PATH/pepin/venus.?ITER'
+
+*OBJECT EMBARY
+*INCLUDE '?PATH/pepin/embary.?ITER'
+ L=6*1,
+ L(4)=0
+ 
+*OBJECT EARTH-ROTATION
+*INCLUDE '?PATH/pepin/erotat.newprec'
+$$ L(7)=22
+ L(7)=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23
+ 
+*OBJECT MARS
+*INCLUDE '?PATH/pepin/mars.?ITER'
+ 
+*OBJECT JUPITER
+*INCLUDE '?PATH/pepin/jupiter.?ITER'
+ 
+*OBJECT SATURN
+*INCLUDE '?PATH/pepin/saturn.?ITER'
+ 
+*OBJECT URANUS
+*INCLUDE '?PATH/pepin/uranus.?ITER'
+$$ L=6*1,
+ 
+*OBJECT NEPTUNE
+*INCLUDE '?PATH/pepin/neptune.?ITER'
+$$ L=6*1,
+ 
+*OBJECT PLUTO
+*INCLUDE '?PATH/pepin/pluto.nbody311'
+$$ L=6*1,
+ 
+*OBJECT MOON
+*INCLUDE '?PATH/pepin/moon.?ITER'
+$$ L=6*1,16, 20, 24
+ L=6*1,16,20
+$$ L=6*1,6,
+ LC3=3*1,LS3=3*1,LJ3=1     $ ADJUST MOON HARMONICS
+ 
+*OBJECT MOON-ROTATION
+*INCLUDE '?PATH/pepin/mrotat.?ITER'
+ L=6*1,3,4,6,7
+ 
+$$*OBJECT
+$$*INCLUDE '?PATH/pepin/psr1937.?ITER'
+$$ L=1,5,6,7,8
+ 
+$*INCLUDE '?PATH/pepin/allast.russ80'
+ 
+*SITES
+*INCLUDE '?PATH/pepin/moonsite.?ITER'
+*SPOTS
+*INCLUDE '?PATH/pepin/moonspot.?ITER'
+$$*INCLUDE '?PATH/pepin/1937spot.?ITER'
+*BIASES
+*INCLUDE '?PATH/pepin/moonbias.?ITER'
+*APRIORI
+*INCLUDE '?PATH/pepin/llrsite3.apriori'
+*INCLUDE '?PATH/pepin/vlbinut1.apriori'
+*INCLUDE '?PATH/pepin/vlbinut2.apriori'
+*INCLUDE '?PATH/pepin/end.apriori'
+*MULTPAR
+$$*INCLUDE '?PATH/pepin/maui.equate'
+#CORROW
+ GMVARY
+ CTVARY
+ MOON CON(20)
+ BETA
+#REF
+#NAME CTONLY
+#DELETE
+ GMVARY
+ BETA
+ GAMMA
+ MOON CON(20)
+#REF
+#NAME GMONLY
+#DELETE
+ CTVARY
+ BETA
+ GAMMA
+ MOON CON(20)
+#REF
+#NAME BETAONLY
+#DELETE
+ GMVARY
+ CTVARY
+ GAMMA
+ MOON CON(20)
+#REF BETAONLY
+#NAME BETGAM
+#INCLUDE
+ GAMMA
+#REF
+#NAME CTPLUS
+#DELETE
+ GMVARY
+#REF
+#NAME GMPLUS
+#DELETE
+ CTVARY
+**END

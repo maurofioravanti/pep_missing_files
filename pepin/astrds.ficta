@@ -1,0 +1,9 @@
+
+*OBJECT 27
+$ fictitious asteroid
+  NPLNT=27,NAME='FICTA'
+  ITAPE=0
+  CON1(1)=2444600.5D0,KCND=1,JTYPE=3   $ ECLIPTIC AND EQUINOX OF 1950.0
+  COND(1)=+2.55,           COND(2)=+0.01
+  COND(3)=+2.00,           COND(4)=+100.00
+  COND(5)=+100.00,         COND(6)=+100.00

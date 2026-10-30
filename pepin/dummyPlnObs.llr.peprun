@@ -1,0 +1,109 @@
+OBS ?RUNNUM - O-C LLR DATA DUMMY DATA GENERATION
+
+ &NMLST1
+*INCLUDE '?PATH/pepin/llrnlst1.include'
+ ICT(4)=1              $ RECALCULATE PARTIALS
+ ICT(15)=-1            $ NO ANALIZ
+ JCT(26)=1 
+ ICT(27)=1             $ TURN ON S.S.C.M. CORRECTION
+ ICT(29)=1             $ USE DERIVATIVES OF PREC/NUT
+$ KPERT=37          $ INCLUDE ASTEROID C-OF-M CORRECTION
+ JCT(29)=1, ICT(34)=0  $ EROTAT CONS ARE NUTATION TERMS
+ ICT(44)= 0            $ NO A PRIORI
+ JCT(33)=33        $ UT1 AND WOBBLE FROM FT33 AND FT34
+ JCT(67)=1         $ USE APPARENT VELOCITIES IN COMPAR LINK
+ 
+$ turn on debug printout
+ JCT(3)=63    $ PROPCO
+ JCT(6)=4095  $ COMPAR
+
+ ICT(37)=-1 $ DO NOT SKIP DUMMY OBS BELOW HORIZON metti -1 se no 0
+ ICT(38)=1
+ NUMOBT=?NUMOBT,
+ IOBS=0,ICT(80)=0,
+ $IOBS0=40,41,42,43,44,45,46,47,48,49
+ IOBS1=60,61,62,63,64,65,66,67,68,69
+
+*INCLUDE '?PATH/pepin/sscon.?ITER'
+*INCLUDE '?PATH/pepin/bltint.parms'
+
+  LPRM=1,2,3,4,5,6,7,8,10,11,12,13,14,16,17,25,26,32,
+       33, 34,35,36,37,38, 
+       43, $ beta' 
+       44, $ gamma'
+       50,51,60,61
+
+
+*OBJECT MERCURY
+*INCLUDE '?PATH/pepin/mercury.?ITER'
+ CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT VENUS
+*INCLUDE '?PATH/pepin/venus.?ITER'
+ CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT EMBARY
+*INCLUDE '?PATH/pepin/embary.?ITER'
+ CON(9)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT EARTH-ROTATION
+*INCLUDE '?PATH/pepin/erotat.?ITER'
+
+*OBJECT MOON
+*INCLUDE '?PATH/pepin/moon.?ITER'
+ CON(9)=?NPRM1 $ turn on perihelion precession
+
+ L=6*1,8,16
+
+*OBJECT MOON-ROTATION
+*INCLUDE '?PATH/pepin/mrotat.?ITER'
+
+*OBJECT MARS
+*INCLUDE '?PATH/pepin/mars.?ITER'
+ CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT JUPITER
+*INCLUDE '?PATH/pepin/jupiter.?ITER'
+ CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT SATURN
+*INCLUDE '?PATH/pepin/saturn.?ITER'
+ CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT URANUS
+*INCLUDE '?PATH/pepin/uranus.?ITER'
+ $CON(5)=?NPRM1 $ turn on perihelion precession
+
+*OBJECT NEPTUNE
+*INCLUDE '?PATH/pepin/neptune.?ITER'
+ $CON(5)=?NPRM1 $ turn on perihelion precession
+
+$*OBJECT PLUTO
+$*INCLUDE '?PATH/pepin/pluto.nbody311'
+
+$*INCLUDE '?PATH/pepin/allast.russ80'
+$*INCLUDE '?PATH/pepin/astrds.ficta'
+
+*SITES
+*INCLUDE '?PATH/pepin/moonsite.?ITER'
+*SPOTS
+*INCLUDE '?PATH/pepin/moonspot.?ITER'
+$NORT 10   1735    0    80         1 1 1
+$SOUT 10   1735    0   -80         1 1 1
+$EAST 10   1735   80     0         1 1 1
+$WEST 10   1735  -80     0         1 1 1
+$M65N 10   1735    0    65         1 1 1
+$M87N 10   1735    0    87         1 1 1
+$AP11 10   1735    23     0         1 1 1
+$AP14 10   1736   -17    -4         1 1 1
+$AP15 10   1735     4    26         1 1 1
+*BIASES
+*INCLUDE '?PATH/pepin/moonbias.?ITER'
+$ EVEN ADJUST THE ONE NORMALLY FIXED
+MLRS MLRS 1985 10     1 0 0.
+
+*DLTRED
+*INCLUDE '?PATH/pepin/PROVA.prec.out.dltred'
+$*INCLUDE '?PATH/pepin/llromc.prec.out.dltred'
+
+**END

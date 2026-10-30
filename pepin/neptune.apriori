@@ -1,0 +1,7 @@
+VOYAGER VALUE FOR NEPTUNE MASS: TYLER ET AL, SCI. 246, P 1466.                  
+$     1/M = 19412.249 +/- 0.057                                                 
+ &NMLST4  N=1, APEST=.TRUE.,DIAGON=.TRUE.,COVAR=.TRUE.,SQRTB=.TRUE.             
+     X= 5.1513866D-5, B= 1.51D-10                                               
+ &END                                                                           
+ MASS NEPTUNE                                                                   
+                                                                                

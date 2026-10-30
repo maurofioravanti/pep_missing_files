@@ -1,0 +1,14 @@
+APRIORI SOLAR QUADRUPOLE MOMENT
+See Pijpers, F.P.. 1998. MNRAS 297, L76.
+See also Godier, S., and Rozelot, J.P., 2001, Solar Phys, 199 217.
+  (2.0 +/- 0.4 pegged to traditional data)
+See also Roxburg, I.W., 2001. A&A 377, 688.
+  (2.21)
+ &NMLST4
+  N=1
+  APEST=.TRUE.,DIAGON=.TRUE.,COVAR=.TRUE.,SQRTB=.TRUE.
+  X=2.18D-7,B=0.06D-7
+  W=1.D+0
+ &END
+ SUNHAR
+ 

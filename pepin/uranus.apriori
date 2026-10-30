@@ -1,0 +1,7 @@
+VOYAGER VALUE FOR URANUS MASS: TYLER ET AL, SCI. 233, P 79.                     
+$     1/M = 22902.99 +/- 0.24                                                   
+ &NMLST4  N=1, APEST=.TRUE.,DIAGON=.TRUE.,COVAR=.TRUE.,SQRTB=.TRUE.             
+     X= 4.3662421D-5, B= 4.6D-10                                                
+ &END                                                                           
+ MASS URANUS                                                                    
+                                                                                

@@ -1,0 +1,16 @@
+#!/bin/csh
+# RUNNUM:  updates the specified run number and displays the new value.
+# The number is stored in a file (see below for the name),
+# where XXX is the name given (the default is 'ast').
+#  J.F.Chandler - 1992 November
+
+unset noclobber
+set name = $1
+if ("$1" == "") set name = ast
+set fn = /home/giada.bargiacchi/peptop/runnum.$name
+
+set num = 0
+if ( -f $fn ) set num = `cat $fn`
+@ num++
+echo $num > $fn
+echo $num
